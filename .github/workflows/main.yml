@@ -26,8 +26,8 @@ jobs:
             pip3 install -r ./requirements.txt
         - name: 'Working'
           env:
-            USERNAME: ${{ secrets.USERNAME }}
+            USERNAME: ${{ secrets.USERNAME_17 }}
             PASSWORD: ${{ secrets.PASSWORD }}
-            BARKKEY: ${{ secrets.BARKKEY }}
+            URL: ${{ secrets.URL_WOIDEN }}
           run: |
             python3 ./main.py
