@@ -29,5 +29,6 @@ jobs:
             USERNAME: ${{ secrets.USERNAME_17 }}
             PASSWORD: ${{ secrets.PASSWORD }}
             URL: ${{ secrets.URL_HAX }}
+            fpush: "hax-17"
           run: |
             python3 ./main.py
