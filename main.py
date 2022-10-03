@@ -21,6 +21,7 @@ from requests_toolbelt import MultipartEncoder
 URL = os.environ['URL']
 USERNAME = os.environ['USERNAME']
 PASSWORD = os.environ['PASSWORD']
+fpush = os.environ['fpush']
 audioToTextDelay = 10
 delayTime = 2
 audioFile = "\\payload.mp3"
@@ -186,7 +187,7 @@ def fspush(text,image_key):
             "header": {
                 "template": "orange",
                 "title": {
-                    "content": "Hax3续订通知",
+                    "content": fpush,
                     "tag": "plain_text"
                 }
             },
