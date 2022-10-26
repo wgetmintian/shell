@@ -4,6 +4,7 @@
 import base64
 import os
 import ssl
+import json
 import time
 import urllib
 import requests
@@ -362,8 +363,8 @@ def push(body):
         body = URL_BASE + '\n\n' + body
         server = 'https://open.feishu.cn'
         fsurl = server + '/open-apis/bot/v2/hook/' + FEISHU_TOKEN
-        rq_fs = requests.post(fsurl, data={"msg_type":"text","content":{"text":body}}, headers={
-            "Content-Type: application/json"})
+        rq_fs = requests.post(fsurl, data=json.dumps({"msg_type":"text","content":{"text": body}}), headers={
+            "Content-Type": "application/json"})
         if rq_fs.status_code == 200:
             print('- fs push Done!')
         else:
