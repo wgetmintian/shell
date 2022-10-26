@@ -1,34 +1,69 @@
-name: 'hax-17_Extend'
+name: 'H-W'
 
 on:
   #push:
   schedule:
-    # run every 2 days on UTC 1/2/3am (9/10/11am CN time)
-     - cron: '25 */4 * * *'
+    # UTC (国内 UTC+8)
+     - cron: '03 10 * * *'
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
 jobs:
-  build:
-    runs-on: windows-2022
-     # runs-on: macos-latest
+  H:
+    runs-on: macos-12
+    env:
+      HOMEBREW_NO_INSTALL_CLEANUP: 1
+
     steps:
         - name: 'Checkout codes'
           uses: actions/checkout@v2
-          with:
-            python-version: '3.9.5'
-#         - name: 'Set up Python'
-#           uses: actions/setup-python@v2
-#           with:
-#             python-version: '3.9.10'
-        - name: 'Install requirements'
+          
+        - name: ' Environment Settings'
           run: |
+            brew upgrade --cask google-chrome
+            brew install ffmpeg
             pip3 install -r ./requirements.txt
-        - name: 'Working'
+            pip3 install undetected-chromedriver
+            yes | pip3 uninstall selenium
+            pip3 install selenium==4.2.0            
+ 
+        - name: 'Renew-H'
           env:
-            USERNAME: ${{ secrets.USERNAME_17 }}
-            PASSWORD: ${{ secrets.PASSWORD }}
-            URL: ${{ secrets.URL_HAX }}
-            fpush: "hax-17"
+            URL_BASE: ${{ secrets.URL_BASE_H }}
+            USER_ID: ${{ secrets.USER_ID }}
+            PASS_WD: ${{ secrets.PASS_WD }}
+            BARK_KEY: ${{ secrets.BARK_KEY }}
+            TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
+            TG_USER_ID: ${{ secrets.TG_USER_ID }}
+
+          run: |
+            python3 ./main.py
+            
+  W:
+    runs-on: macos-12
+    env:
+      HOMEBREW_NO_INSTALL_CLEANUP: 1
+
+    steps:
+        - name: 'Checkout codes'
+          uses: actions/checkout@v2
+          
+        - name: ' Environment Settings'
+          run: |
+            brew upgrade --cask google-chrome
+            brew install ffmpeg
+            pip3 install -r ./requirements.txt
+            pip3 install undetected-chromedriver
+            yes | pip3 uninstall selenium
+            pip3 install selenium==4.2.0      
+        - name: 'Renew-W'
+          env:
+            URL_BASE: ${{ secrets.URL_BASE_W }}
+            USER_ID: ${{ secrets.USER_ID }}
+            PASS_WD: ${{ secrets.PASS_WD }}
+            BARK_KEY: ${{ secrets.BARK_KEY }}
+            TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
+            TG_USER_ID: ${{ secrets.TG_USER_ID }}
+
           run: |
             python3 ./main.py
