@@ -30,11 +30,12 @@ jobs:
         - name: 'Renew-H'
           env:
             URL_BASE: ${{ secrets.URL_BASE_H }}
-            USER_ID: ${{ secrets.USER_ID }}
+            USER_ID: ${{ secrets.USER_ID_17 }}
             PASS_WD: ${{ secrets.PASS_WD }}
             BARK_KEY: ${{ secrets.BARK_KEY }}
             TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
             TG_USER_ID: ${{ secrets.TG_USER_ID }}
+            FEISHU_TOKEN: ${{ secrets.FEISHU_TOKEN }}
 
           run: |
             python3 ./main.py
@@ -59,11 +60,12 @@ jobs:
         - name: 'Renew-W'
           env:
             URL_BASE: ${{ secrets.URL_BASE_W }}
-            USER_ID: ${{ secrets.USER_ID }}
+            USER_ID: ${{ secrets.USER_ID_17 }}
             PASS_WD: ${{ secrets.PASS_WD }}
             BARK_KEY: ${{ secrets.BARK_KEY }}
             TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
             TG_USER_ID: ${{ secrets.TG_USER_ID }}
+            FEISHU_TOKEN: ${{ secrets.FEISHU_TOKEN }}
 
           run: |
             python3 ./main.py
