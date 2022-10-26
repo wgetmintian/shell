@@ -1,5 +1,2 @@
-requests
 urllib3
-selenium
-undetected-chromedriver
-requests_toolbelt
+helium
