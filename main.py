@@ -52,6 +52,12 @@ except:
     # 本地调试用
     TG_USER_ID = ''
 
+try:
+    FEISHU_TOKEN = os.environ['FEISHU_TOKEN']
+except:
+    # 本地调试用
+    FEISHU_TOKEN = ''    
+
 
 def urlDecode(s):
     return str(base64.b64decode(s + '=' * (4 - len(s) % 4))).split('\'')[1]
@@ -350,6 +356,20 @@ def push(body):
             print('- tg push Done!')
         else:
             print('*** tg push fail! ***', rq_tg.content.decode('utf-8'))
+    if FEISHU_TOKEN == '' :
+        print('*** No FEISHU_TOKEN ***')
+    else: 
+        body = URL_BASE + '\n\n' + body
+        server = 'https://open.feishu.cn'
+        fsurl = server + '/open-apis/bot/v2/hook/' + FEISHU_TOKEN
+        rq_fs = requests.post(fsurl, data={"msg_type":"text","content":{"text":body}}, headers={
+            "Content-Type: application/json"})
+        if rq_fs.status_code == 200:
+            print('- fs push Done!')
+        else:
+            print('*** fs push fail! ***', rq_fs.content.decode('utf-8'))
+
+
 
     print('- finish!')
     # kill_browser()
