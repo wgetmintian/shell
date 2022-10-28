@@ -10,7 +10,7 @@ on:
 
 jobs:
   H:
-    runs-on: macos-12
+    runs-on: self-hosted
     env:
       HOMEBREW_NO_INSTALL_CLEANUP: 1
 
@@ -41,7 +41,7 @@ jobs:
             python3 ./main.py
             
   W:
-    runs-on: macos-12
+    runs-on: self-hosted
     env:
       HOMEBREW_NO_INSTALL_CLEANUP: 1
 
