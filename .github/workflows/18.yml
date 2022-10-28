@@ -20,13 +20,11 @@ jobs:
           
         - name: ' Environment Settings'
           run: |
-            brew upgrade --cask google-chrome
-            brew install ffmpeg
+            apt update
+            apt install chromium-browser ffmpeg python3-pip -y
             pip3 install -r ./requirements.txt
             pip3 install undetected-chromedriver
-            yes | pip3 uninstall selenium
             pip3 install selenium==4.2.0            
- 
         - name: 'Renew-H'
           env:
             URL_BASE: ${{ secrets.URL_BASE_H }}
@@ -51,12 +49,11 @@ jobs:
           
         - name: ' Environment Settings'
           run: |
-            brew upgrade --cask google-chrome
-            brew install ffmpeg
+            apt update
+            apt install chromium-browser ffmpeg python3-pip -y
             pip3 install -r ./requirements.txt
             pip3 install undetected-chromedriver
-            yes | pip3 uninstall selenium
-            pip3 install selenium==4.2.0      
+            pip3 install selenium==4.2.0    
         - name: 'Renew-W'
           env:
             URL_BASE: ${{ secrets.URL_BASE_W }}
