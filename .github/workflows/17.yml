@@ -21,8 +21,7 @@ jobs:
         - name: ' Environment Settings'
           run: |
             apt update
-            apt install chromium-browser
-            apt install ffmpeg
+            apt install chromium-browser ffmpeg -y
             pip3 install -r ./requirements.txt
             pip3 install undetected-chromedriver
             pip3 install selenium==4.2.0            
@@ -52,8 +51,7 @@ jobs:
         - name: ' Environment Settings'
           run: |
             apt update
-            apt install chromium-browser
-            apt install ffmpeg
+            apt install chromium-browser ffmpeg -y
             pip3 install -r ./requirements.txt
             pip3 install undetected-chromedriver
             pip3 install selenium==4.2.0
